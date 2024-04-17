@@ -64,7 +64,7 @@ const Home: NextPage = () => {
           <a href="">About</a>
         </Nav>
 
-        <Button onClick={() => setSelectedWallet((document.getElementById("wallet-name") as HTMLInputElement).value as SupportedWallet)}>Connect Wallet</Button>
+        <Button>Connect Wallet</Button>
       </ContainerNav>
 
     </Container>
