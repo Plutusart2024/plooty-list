@@ -3,6 +3,8 @@ import { useEffect, useState } from 'react';
 import { WalletApiCip0030, SupportedWallet, supportedWallets } from '@cardano/wallet';
 import NftForm from "@components/NftForm";
 import { Lucid, Blockfrost } from 'lucid-cardano';
+import { Button, Container, ContainerNav, Nav } from "./styles";
+
 
 const Home: NextPage = () => {
   const [selectedWallet, setSelectedWallet] = useState(undefined as SupportedWallet | undefined);
@@ -52,13 +54,28 @@ const Home: NextPage = () => {
   if(!wallet || !lucid) {
     return (
       <div>
+         <Container>
+         <img src="https://plooty.vercel.app/images/logo.png" alt="React Image" />
+
+      <ContainerNav>
+        <Nav>
+          <a href="">Market</a>
+          <a href="">Resource</a>
+          <a href="">About</a>
+        </Nav>
+
+        <Button onClick={() => setSelectedWallet((document.getElementById("wallet-name") as HTMLInputElement).value as SupportedWallet)}>Connect Wallet</Button>
+      </ContainerNav>
+
+    </Container>
+     
         <select id="wallet-name">
           {supportedWallets.map((supportedWallet: SupportedWallet) =>
             <option key={supportedWallet} value={supportedWallet}>{supportedWallet}</option>
           )}
         </select>
         <button onClick={() => setSelectedWallet((document.getElementById("wallet-name") as HTMLInputElement).value as SupportedWallet)}>
-          Connect wallet
+     List NFTs
         </button>
       </div>
     );
